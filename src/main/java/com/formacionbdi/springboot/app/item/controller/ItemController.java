@@ -23,12 +23,15 @@ import com.formacionbdi.springboot.app.item.models.service.ItemService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 /*anotacion que nos permitr actualizar los componentes, controladores, clases
- * anotadas con componen o services*/
+ * anotadas con component o services, que se esta inyectando con value configuraciones y tambien el Environment;
+ * se actualiza, se refresca el contexto, vuelve inyectar vuelve inicializar le componente con los cambios 
+ * establecidos en tiempo real sin tener que reiniciar la aplicacion, mediante un endpoint de SpringActuator*/
 @RefreshScope
 @RestController
 public class ItemController {
 
 	private static Logger log = LoggerFactory.getLogger(ItemController.class);
+	
 	
 	@Autowired
 	private Environment env;
@@ -76,7 +79,11 @@ public class ItemController {
 		json.put("texto", texto);
 		json.put("puerto", puerto);
 		
+		/*Aca de valida el ambiente en el que nos encontramos si es de desarrollo o produccion, para
+		 hacer ello se necesita el Bean de Spring Environment; se pregunta por el profile, de que
+		 ambiente corresponde(getActiveProfiles()), indice 0, primer elemento que seria el profile activo*/
 		if(env.getActiveProfiles().length > 0 && env.getActiveProfiles()[0].equals("dev")) {
+			//aca los valores se obtienen del repositorio Git, tambien usando el objeto Environment
 			json.put("autor.nombre", env.getProperty("configuracion.autor.nombre"));
 			json.put("autor.email", env.getProperty("configuracion.autor.correo"));
 		}
