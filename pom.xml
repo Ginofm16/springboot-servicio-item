@@ -19,6 +19,14 @@
 	</properties>
 
 	<dependencies>
+	
+		<!-- dependencia para utilzar jar de otro proyecto -->
+		<dependency>
+			<groupId>com.formacionbdi.springboot.app.commons</groupId>
+			<artifactId>springboot-servicio-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

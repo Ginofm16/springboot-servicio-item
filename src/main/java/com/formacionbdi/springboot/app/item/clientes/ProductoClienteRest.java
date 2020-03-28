@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.formacionbdi.springboot.app.item.models.Producto;
+import com.formacionbdi.springboot.app.commons.models.entity.Producto;
 
 //se define que esta interface es un cliente feign
 //nombramos el microservicio que nos queremos conectar, y su url

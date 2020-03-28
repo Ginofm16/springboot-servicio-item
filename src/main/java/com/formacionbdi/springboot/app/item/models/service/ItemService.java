@@ -4,7 +4,7 @@ import java.util.List;
 
 
 import com.formacionbdi.springboot.app.item.models.Item;
-import com.formacionbdi.springboot.app.item.models.Producto;
+import com.formacionbdi.springboot.app.commons.models.entity.Producto;
 
 
 public interface ItemService {
